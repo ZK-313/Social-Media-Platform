@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OWsnnXJCKnY=",
+  "dgSpecHash": "PqjtYjltMjw=",
   "success": true,
-  "projectFilePath": "Z:\\RiderProjects\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "D:\\git\\Social-Media-Platform\\Project\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zulfi\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512"
   ],

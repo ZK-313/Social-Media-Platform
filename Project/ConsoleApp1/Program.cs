@@ -70,7 +70,9 @@ class Program
         user2.CreatePost("Heyyyyyy this is my first post!");
        // Console.WriteLine("Post: "+user2.Posts[0].Content+"\nLikes: "+user2.Posts[0].Likes);
         user1.LikePost(user2.Posts[0]);
+        Console.WriteLine("Stacy Notifications: "+user2.Notifications.Count);
         user1.CreateComment("Hello Stacy!", user2.Posts[0]);
+        Console.WriteLine("Stacy Notifications: "+user2.Notifications.Count);
         Console.WriteLine(user2.Posts[0].Comments[0].Commenter.Username +": "+user2.Posts[0].Comments[0].Message);
     }
     

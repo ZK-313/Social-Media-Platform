@@ -38,6 +38,7 @@ public class User
     public List<User> FollowingList { get; private set; }= new List<User>();
     public List<User> FollowersList { get; private set; }= new List<User>();
     public List<Post> Posts { get; set; }= new List<Post>();
+    public List<Notification> Notifications { get; set; } = new List<Notification>();
     public List<Comment> Comments{ get; set; }= new List<Comment>();
 
 
@@ -56,11 +57,18 @@ public class User
         Posts.Add(p);
     }
 
+    private void AddNotification(Notification notification)
+    {
+        Notifications.Add(notification);
+    }
+
     public void CreateComment(string message, Post post)
     {
         Comment c = new Comment(post, this, message);
         Comments.Add(c);
+        Notification n = new Notification(this, Notification.NotificationType.Comment, post, c);
         post.AddComment(c);
+        post.Poster.AddNotification(n);
     }
 
     public void RemoveComment(Comment comment)
@@ -72,11 +80,15 @@ public class User
     public void LikePost(Post post)
     {
         post.Like(this);
+        Notification n = new Notification(this, Notification.NotificationType.LikePost, post);
+        post.Poster.AddNotification(n);
     }
 
     public void LikeComment(Comment comment)
     {
         comment.Like(this);
+        Notification n = new Notification(this, Notification.NotificationType.LikeComment, comment);
+        comment.Commenter.AddNotification(n);
     }
 
     private void AddFollower(User user)
@@ -95,6 +107,8 @@ public class User
         {
             FollowingList.Add(user);
             user.AddFollower(this);
+            Notification n = new Notification(this, Notification.NotificationType.Follow);
+            user.AddNotification(n);
         }
     }
 
